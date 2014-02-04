@@ -1,0 +1,22 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase
+@using StackExchange.Profiling
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <h1>
+        Hello Man!!!
+    </h1>
+    
+    My date time = @Html.Raw(DateTime.Now.ToShortTimeString())
+    <br />
+    My render = @String.IsNullOrEmpty(MiniProfiler.RenderIncludes().ToString())
+    <br />
+    My report = @Html.Raw(MiniProfiler.RenderIncludes().ToString())
+    
+
+</body>
+</html>
