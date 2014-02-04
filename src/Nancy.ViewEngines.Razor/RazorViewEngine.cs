@@ -101,7 +101,7 @@
             {
                 var writer =
                     new StreamWriter(stream);
-
+                
                 var view = this.GetViewInstance(viewLocationResult, renderContext, referencingAssembly, model);
 
                 view.ExecuteView(null, null);
