@@ -26,7 +26,7 @@ namespace NancyViewStart
 
         private static void PostRequest(NancyContext ctx)
         {
-            //MiniProfiler.Stop();
+            MiniProfiler.Stop();
         }
     }
 }

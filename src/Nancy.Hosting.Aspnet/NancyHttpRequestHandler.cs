@@ -79,6 +79,10 @@ namespace Nancy.Hosting.Aspnet
             var wrappedContext = new HttpContextWrapper(context);
             var handler = new NancyHandler(engine);
             var task = handler.ProcessRequest(wrappedContext, cb, state);
+            if (cb!=null)
+            {
+                cb(task);
+            }
             return task;
         }
 

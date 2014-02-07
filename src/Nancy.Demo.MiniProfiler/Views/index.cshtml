@@ -1,10 +1,11 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
 @using StackExchange.Profiling
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Title</title>
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 <body>
     <h1>
@@ -15,8 +16,6 @@
     <br />
     My render = @String.IsNullOrEmpty(MiniProfiler.RenderIncludes().ToString())
     <br />
-    My report = @Html.Raw(MiniProfiler.RenderIncludes().ToString())
-    
-
+    @Html.Raw(MiniProfiler.RenderIncludes().ToHtmlString())
 </body>
 </html>

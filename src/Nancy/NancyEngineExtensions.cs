@@ -58,9 +58,8 @@ namespace Nancy
                 throw new ArgumentNullException("nancyEngine");
             }
 
-            nancyEngine
-                .HandleRequest(request, preRequest, cancellationToken)
-                .WhenCompleted(t => onComplete(t.Result), t => onError(t.Exception));
+            var tsk = nancyEngine.HandleRequest(request, preRequest, cancellationToken);
+            tsk.WhenCompleted(t => onComplete(t.Result), t => onError(t.Exception));
 
             //this.HandleRequest(request, null, onComplete, onError);
         }

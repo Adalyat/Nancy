@@ -39,12 +39,15 @@ namespace Nancy.Hosting.Aspnet
 
             if (cb != null)
             {
-                tcs.Task.ContinueWith(task => cb(task), TaskContinuationOptions.ExecuteSynchronously);
+                //tcs.Task.ContinueWith(task => cb(task), TaskContinuationOptions.ExecuteSynchronously);
             }
 
             this.engine.HandleRequest(
                 request, 
-                ctx => tcs.SetResult(new Tuple<NancyContext, HttpContextBase>(ctx, context)), 
+                ctx => {
+                    var newTuple = new Tuple<NancyContext, HttpContextBase>(ctx, context); 
+                    tcs.SetResult(newTuple);
+                }, 
                 tcs.SetException);
 
             return tcs.Task;
