@@ -39,7 +39,12 @@ namespace Nancy.Hosting.Aspnet
 
             if (cb != null)
             {
-                //tcs.Task.ContinueWith(task => cb(task), TaskContinuationOptions.ExecuteSynchronously);
+                //tcs.Task.ContinueWith(
+                //    task =>
+                //    {
+                //        cb(task);
+                //    },
+                //    TaskContinuationOptions.ExecuteSynchronously);
             }
 
             this.engine.HandleRequest(
@@ -49,6 +54,11 @@ namespace Nancy.Hosting.Aspnet
                     tcs.SetResult(newTuple);
                 }, 
                 tcs.SetException);
+
+            if (cb != null)
+            {
+                cb(tcs.Task);
+            }
 
             return tcs.Task;
         }
