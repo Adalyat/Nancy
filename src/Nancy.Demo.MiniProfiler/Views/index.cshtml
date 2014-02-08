@@ -1,21 +1,11 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
 @using StackExchange.Profiling
 
+@{
+    Layout = "Views/_Layout.cshtml";
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Title</title>
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-</head>
-<body>
-    <h1>
-        Hello Man!!!
-    </h1>
-    
-    My date time = @Html.Raw(DateTime.Now.ToShortTimeString())
-    <br />
-    My render = @String.IsNullOrEmpty(MiniProfiler.RenderIncludes().ToString())
-    <br />
-    @Html.Raw(MiniProfiler.RenderIncludes().ToHtmlString())
-</body>
-</html>
+<br />
+RenderIncludes is emplty = <strong>@String.IsNullOrEmpty(MiniProfiler.RenderIncludes().ToString())</strong>
+
+
